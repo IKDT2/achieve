@@ -1,0 +1,21 @@
+@charset "UTF-8";
+.company{
+  border-collapse: collapse;
+}
+.company tr{
+  height: 5rem;
+}
+.company th{
+  width: 100px;
+  background-color: #B1B1B1;
+  color: #fff;
+  border-bottom: solid 1px #fff;
+}
+.company tr:last-child th {
+  border-color: #B1B1B1;
+}
+.company td{
+  width: 560px;
+  padding-left: 1rem;
+  border: solid 1px #B1B1B1;
+}
