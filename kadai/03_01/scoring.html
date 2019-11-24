@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="scoring.css">
+    <title>DIVE INTO SAMPLE JavaScript</title>
+  </head>
+  <body>
+    <div class="container">
+      <br><br>
+      <p>名前：テスト太郎</p>
+
+      <p>国語：<input type="number" id="national_language" value=0></p>
+      <p>英語：<input type="number" id="english" value=0></p>
+      <p>数学：<input type="number" id="mathematics" value=0></p>
+      <p>理科：<input type="number" id="science" value=0></p>
+      <p>社会：<input type="number" id="society" value=0></p>
+
+      <br><br>
+      <p>合計点：<label id="sum_indicate"></label></p>
+
+      <br><br>
+      <p>平均点：<label id="average_indicate"></label></p>
+
+      <br><br>
+      <p><label class="btn btn-primary" id="btn-evaluation">ランク</label> ： <label id="evaluation"></label></p>
+
+      <br><br>
+      <p><label class="btn btn-success" id="btn-judge">判定</label> ： <label id="judge"></label></p>
+
+      <br><br>
+      <p><label class="btn btn-warning" id="btn-declaration">最終ジャッジ</label> ： <label id="declaration"></label></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="scoring.js"></script>
+  </body>
+</html>
