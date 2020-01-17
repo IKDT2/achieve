@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+    <h1>ゴーヤよりきゅうりが好きです</h1>
+
+    <% require 'pg' %>
+
+    <% connection = PG::connect(dbname: "goya") ##goyaDBへの接続情報を変数connectionに代入 %> 
+    <% connection.internal_encoding = "UTF-8" %>
+
+    <% result1 = connection.exec("SELECT * FROM crops WHERE give_for != '自家消費';") %>
+    <% data = [] %>
+    <% result1.each do |record1| %>
+      <%  data << "
+          <tr>
+            <td>#{record1["give_for"]}</td>
+            <td>#{record1["length"]}</td>
+            <td>#{record1["weight"]}</td>
+            <td>#{record1["quality"]}</td>
+            <td>#{record1["date"]}</td>
+          </tr>
+      " %>
+    <% end %>
+    <form action="goya2.cgi" method="POST">
+      <input type="hidden" name="goya2" value="<%= data.join(' ') %>">
+      <input type="submit" value="外部出荷ゴーヤ情報" >
+    </form>
+
+
+    <% result = connection.exec("SELECT * FROM crops WHERE quality = false;") %>
+    <% data = [] %>
+    <% result.each do |record| %>
+      <%  data << "
+          <tr>
+            <td>#{record["length"]}</td>
+            <td>#{record["weight"]}</td>
+            <td>#{record["give_for"]}</td>
+            <td>#{record["date"]}</td>
+          </tr>
+      " %>
+    <% end %>
+    <form action="goya.cgi" method="POST">
+      <input type="hidden" name="goya" value="<%= data.join(' ') %>">
+      <input type="submit" value="低品質ゴーヤ情報" >
+    </form>
+
+  </body>
+</html>
